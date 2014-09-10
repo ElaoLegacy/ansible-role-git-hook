@@ -1,0 +1,13 @@
+---
+
+- name: pre-commit template
+  template: >
+    src=pre-commit.j2
+    dest={{ item.key }}/.git/hooks/pre-commit
+  with_dict: elao_git_hooks
+
+- name: pre-commit mode
+  file: >
+    path={{ item.key }}/.git/hooks/pre-commit
+    mode=0775
+  with_dict: elao_git_hooks
